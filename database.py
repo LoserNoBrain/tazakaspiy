@@ -3,7 +3,7 @@ from datetime import datetime
 DB_NAME = 'data.db'
 def connect():
     return sqlite3.connect(DB_NAME)
-def init_db():
+def def init_db():
     conn = connect()
     cur = conn.cursor()
 
@@ -15,6 +15,7 @@ def init_db():
         last_name TEXT
     )
     ''')
+
     cur.execute('''
     CREATE TABLE IF NOT EXISTS cleanups (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -27,6 +28,7 @@ def init_db():
         created_at TEXT
     )
     ''')
+
     cur.execute('''
     CREATE TABLE IF NOT EXISTS cleanup_items (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -36,6 +38,7 @@ def init_db():
         bags INTEGER
     )
     ''')
+
     cur.execute('''
     CREATE TABLE IF NOT EXISTS trash_spots (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -47,6 +50,7 @@ def init_db():
         created_at TEXT
     )
     ''')
+
     conn.commit()
     conn.close()
     def add_user(user_id, username, first_name, last_name):
