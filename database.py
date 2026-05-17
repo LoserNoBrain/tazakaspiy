@@ -7,16 +7,16 @@ def init_db():
     conn = connect()
     cur = conn.cursor()
 
-    cur.execute('''
+    cur.execute("""
     CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY,
         username TEXT,
         first_name TEXT,
         last_name TEXT
     )
-    ''')
+    """)
 
-    cur.execute('''
+    cur.execute("""
     CREATE TABLE IF NOT EXISTS cleanups (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         user_id INTEGER,
@@ -27,9 +27,9 @@ def init_db():
         notes TEXT,
         created_at TEXT
     )
-    ''')
+    """)
 
-    cur.execute('''
+    cur.execute("""
     CREATE TABLE IF NOT EXISTS cleanup_items (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         cleanup_id INTEGER,
@@ -37,9 +37,9 @@ def init_db():
         weight REAL,
         bags INTEGER
     )
-    ''')
+    """)
 
-    cur.execute('''
+    cur.execute("""
     CREATE TABLE IF NOT EXISTS trash_spots (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         user_id INTEGER,
@@ -49,7 +49,7 @@ def init_db():
         photo_file_id TEXT,
         created_at TEXT
     )
-    ''')
+    """)
 
     conn.commit()
     conn.close()
