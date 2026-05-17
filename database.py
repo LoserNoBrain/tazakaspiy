@@ -3,7 +3,7 @@ from datetime import datetime
 DB_NAME = 'data.db'
 def connect():
     return sqlite3.connect(DB_NAME)
-def def init_db():
+def init_db():
     conn = connect()
     cur = conn.cursor()
 
