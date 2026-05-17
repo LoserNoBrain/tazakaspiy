@@ -168,4 +168,27 @@ def get_spots():
         }
         for r in rows
     ]
+def get_stats():
+    conn = connect()
+    cur = conn.cursor()
 
+    cur.execute('SELECT SUM(weight) FROM cleanup_items')
+    total_kg = cur.fetchone()[0] or 0
+
+    cur.execute('SELECT COUNT(*) FROM cleanups')
+    total_cleanups = cur.fetchone()[0]
+
+    cur.execute('SELECT COUNT(*) FROM trash_spots')
+    total_spots = cur.fetchone()[0]
+
+    cur.execute('SELECT COUNT(*) FROM users')
+    total_users = cur.fetchone()[0]
+
+    conn.close()
+
+    return {
+        'total_kg': total_kg,
+        'total_cleanups': total_cleanups,
+        'total_spots': total_spots,
+        'total_volunteers': total_users
+    }
